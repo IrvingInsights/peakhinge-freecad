@@ -12,4 +12,4 @@ if [ -f house_design_studio/.env ]; then
 fi
 
 echo "Starting House Design Studio at http://localhost:8000 ..."
-python3 -m uvicorn house_design_studio.backend.app:app --host 0.0.0.0 --port 8000
+python3 -m uvicorn house_design_studio.backend.app:app --host 127.0.0.1 --port 8000
