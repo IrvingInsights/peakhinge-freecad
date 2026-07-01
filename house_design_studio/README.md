@@ -39,33 +39,50 @@ Engineer**, **Designer / Artist** (which absorbs the "sculptor" viewpoint),
 **Project Manager** — condensed from the nine professions in the original brief
 to keep Phase 1 tractable.
 
-## Quick start
+## Quick start (Windows — one click)
 
-```bash
-python -m venv .venv
-. .venv/bin/activate           # Windows: .venv\Scripts\activate
-pip install -r house_design_studio/requirements.txt
-cp house_design_studio/.env.example house_design_studio/.env   # then edit it
-./house_design_studio/run.sh   # Windows: house_design_studio\run.bat
-```
+You need two things installed first: **FreeCAD 1.0+** (for the 3D model and
+drawings) and **Python 3.10+** (tick *"Add Python to PATH"* during install).
+You also need a **Claude API key** from <https://console.anthropic.com/>.
 
-Open <http://localhost:8000>, type a description (or click **Use built-in
-sample**), and press **Run design**.
+Then:
 
-### Two things you need for a full run
+1. Get the code onto your PC (clone the repo, or download it as a ZIP and unzip).
+2. Open the `house_design_studio` folder and **double-click `run.bat`**.
+3. The first time, it installs everything and asks you to paste your API key
+   (saved locally, never shared).
+4. Your browser opens to the app. Click **Use built-in sample** to confirm it
+   works, then type your own description and press **Run design**.
 
-1. **FreeCAD 1.0+** installed locally (for the real BIM model and drawings). If
-   `FreeCADCmd` is not on your `PATH`, set `HDS_FREECAD_CMD` to its full path.
-2. **`ANTHROPIC_API_KEY`** in your environment (for the translator and the
-   expert council). Get one at <https://console.anthropic.com/>.
+`run.bat` finds your FreeCAD install automatically. If it can't (unusual
+install location), it says so and you can paste the path to `FreeCADCmd.exe`
+into `house_design_studio\.env` as `HDS_FREECAD_CMD=...`.
 
-### Running without them (offline demo)
+### Mac / Linux
+
+Same idea: install FreeCAD + Python, then run `./house_design_studio/run.sh`.
+On first run, edit `house_design_studio/.env` to add `ANTHROPIC_API_KEY=...`
+(copy it from `.env.example`).
+
+### Running without FreeCAD or a key (offline demo)
+
+Set either flag in `house_design_studio\.env` (or your shell):
 
 - `HDS_DEV_MODE_SKIP_FREECAD=1` — derive geometry in pure Python instead of
   FreeCAD. Drawings/IFC/STEP are marked "skipped" in the results.
 - `HDS_DEV_MODE_MOCK_CLAUDE=1` — use scripted AI responses so the whole pipeline
   runs with **no API key**. The council raises no concerns, so the run converges
   on the automated checks alone. Good for demos and CI.
+
+### Manual setup (if you prefer not to use the scripts)
+
+```bash
+python -m venv .venv
+. .venv/bin/activate           # Windows: .venv\Scripts\activate
+pip install -r house_design_studio/requirements.txt
+cp house_design_studio/.env.example house_design_studio/.env   # then add your key
+python -m house_design_studio.backend.launch
+```
 
 ## Testing
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Start House Design Studio. Open http://localhost:8000 in your browser.
+# Start House Design Studio (Mac/Linux). A browser window opens automatically.
 set -e
 cd "$(dirname "$0")/.."
 
-# Load .env if present.
-if [ -f house_design_studio/.env ]; then
-  set -a
-  # shellcheck disable=SC1091
-  . house_design_studio/.env
-  set +a
+# Prefer a local virtual environment if one exists.
+if [ -x ".venv/bin/python" ]; then
+  PY=".venv/bin/python"
+else
+  PY="python3"
 fi
 
-echo "Starting House Design Studio at http://localhost:8000 ..."
-python3 -m uvicorn house_design_studio.backend.app:app --host 127.0.0.1 --port 8000
+# The launcher loads house_design_studio/.env, auto-detects FreeCAD, opens the
+# browser, and starts the server.
+exec "$PY" -m house_design_studio.backend.launch
