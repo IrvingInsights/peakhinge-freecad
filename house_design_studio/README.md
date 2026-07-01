@@ -58,6 +58,11 @@ Then:
 install location), it says so and you can paste the path to `FreeCADCmd.exe`
 into `house_design_studio\.env` as `HDS_FREECAD_CMD=...`.
 
+**Desktop shortcut:** the first time you run `run.bat`, it adds a **House Design
+Studio** shortcut (with the house icon) to your Desktop, so afterwards you can
+launch the app with a double-click from there. If you'd rather create it
+yourself, double-click `create_desktop_shortcut.bat`.
+
 ### Mac / Linux
 
 Same idea: install FreeCAD + Python, then run `./house_design_studio/run.sh`.

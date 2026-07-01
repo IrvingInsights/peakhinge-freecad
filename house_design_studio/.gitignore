@@ -2,6 +2,8 @@
 jobs/
 # Local secrets / config.
 .env
+# First-run marker (desktop shortcut created).
+.shortcut_created
 # Python.
 __pycache__/
 *.pyc

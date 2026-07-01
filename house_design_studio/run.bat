@@ -38,7 +38,22 @@ if not defined HAS_KEY (
   )
 )
 
-REM 4. Launch (auto-detects FreeCAD, opens the browser, starts the server).
+REM 4. Create a Desktop shortcut on first run (once; resolves the real Desktop
+REM    path via Windows, so it works even with OneDrive-redirected Desktops).
+if not exist "%~dp0.shortcut_created" (
+  powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+    "$ws=New-Object -ComObject WScript.Shell;" ^
+    "$l=$ws.CreateShortcut((Join-Path $ws.SpecialFolders('Desktop') 'House Design Studio.lnk'));" ^
+    "$l.TargetPath='%~dp0run.bat';" ^
+    "$l.WorkingDirectory='%~dp0';" ^
+    "$l.IconLocation='%~dp0frontend\house.ico';" ^
+    "$l.Description='House Design Studio';" ^
+    "$l.Save()" >nul 2>&1
+  >"%~dp0.shortcut_created" echo created
+  echo A "House Design Studio" shortcut has been added to your Desktop.
+)
+
+REM 5. Launch (auto-detects FreeCAD, opens the browser, starts the server).
 echo.
 echo Starting House Design Studio ... a browser window will open shortly.
 echo (Keep this window open while you use the app. Press Ctrl+C to stop.)
