@@ -1,0 +1,8 @@
+# Runtime job outputs (audit trail is regenerated per run).
+jobs/
+# Local secrets / config.
+.env
+# Python.
+__pycache__/
+*.pyc
+.pytest_cache/

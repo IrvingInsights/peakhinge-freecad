@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>House Design Studio</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>House Design Studio</h1>
+    <p class="tagline">
+      Describe a house in plain words or upload a sketch. The studio builds a
+      parametric BIM model, runs a council of expert reviewers in a revision
+      loop, and produces a PE-review-ready documentation package.
+    </p>
+  </header>
+
+  <main>
+    <section class="card" id="input-card">
+      <h2>1. Describe your house</h2>
+      <textarea id="brief" rows="6"
+        placeholder="e.g. A small single-story one-bedroom cabin, about 8 by 6 metres, gable roof, slab on grade, big south-facing windows for winter sun."></textarea>
+
+      <label class="file-label">
+        Optional: attach sketches / photos / handwritten notes
+        <input type="file" id="images" accept="image/*" multiple />
+      </label>
+
+      <div class="actions">
+        <button id="run-btn">Run design</button>
+        <button id="sample-btn" class="secondary">Use built-in sample</button>
+      </div>
+      <p class="hint" id="mode-hint"></p>
+    </section>
+
+    <section class="card hidden" id="progress-card">
+      <h2>2. Progress</h2>
+      <p id="status-line" class="status">Waiting…</p>
+      <ol id="progress-list"></ol>
+    </section>
+
+    <section class="card hidden" id="results-card">
+      <h2>3. Results</h2>
+      <p id="result-summary"></p>
+      <h3>Artifacts</h3>
+      <ul id="artifact-list"></ul>
+      <h3>Design Basis &amp; PE-Review Package</h3>
+      <pre id="report" class="report"></pre>
+    </section>
+
+    <footer>
+      <p class="disclaimer">
+        This tool produces PE-review-ready documentation only. It cannot and does
+        not issue a Professional Engineer stamp. A licensed PE (and, where
+        required, a licensed Architect) must independently review and seal any
+        design before it is built.
+      </p>
+    </footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

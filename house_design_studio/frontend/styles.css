@@ -1,0 +1,106 @@
+:root {
+  --bg: #f4f1ea;
+  --card: #ffffff;
+  --ink: #2a2a28;
+  --accent: #4a6b52;
+  --accent-dark: #35503c;
+  --muted: #6b6b64;
+  --border: #ddd8cc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+header {
+  padding: 32px 24px 8px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+h1 { margin: 0 0 4px; font-size: 1.9rem; }
+.tagline { color: var(--muted); margin: 0; max-width: 60ch; }
+
+main { max-width: 860px; margin: 0 auto; padding: 16px 24px 48px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-top: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.card h2 { margin-top: 0; font-size: 1.2rem; }
+
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  font: inherit;
+  resize: vertical;
+}
+
+.file-label {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+
+button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 18px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { background: var(--accent-dark); }
+button.secondary { background: #ece7db; color: var(--ink); }
+button.secondary:hover { background: #e0dacb; }
+button:disabled { opacity: 0.5; cursor: default; }
+
+.hint { color: var(--muted); font-size: 0.85rem; margin: 10px 0 0; }
+.status { font-weight: 600; }
+
+#progress-list { color: var(--muted); font-size: 0.92rem; }
+#progress-list li { margin-bottom: 2px; }
+
+.report {
+  background: #faf8f3;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  max-height: 520px;
+  overflow: auto;
+  white-space: pre-wrap;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+}
+
+#artifact-list { padding-left: 18px; }
+#artifact-list li { margin-bottom: 4px; }
+#artifact-list .skipped { color: var(--muted); }
+
+.disclaimer {
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 28px;
+}
+
+.hidden { display: none; }
