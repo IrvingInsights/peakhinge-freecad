@@ -41,22 +41,34 @@ to keep Phase 1 tractable.
 
 ## Quick start (Windows — one click)
 
-You need two things installed first: **FreeCAD 1.0+** (for the 3D model and
-drawings) and **Python 3.10+** (tick *"Add Python to PATH"* during install).
-You also need a **Claude API key** from <https://console.anthropic.com/>.
+### Step 0 — install two things first (one-time)
 
-Then:
+1. **Python 3.10+** from <https://www.python.org/downloads/>. On the first
+   install screen, **tick "Add python.exe to PATH"** before clicking Install —
+   this is the single most common thing people miss, and without it the app
+   cannot start.
+2. **FreeCAD 1.0+** from <https://www.freecad.org/downloads.php> (for the 3D
+   model and drawings).
+3. A **Claude API key** from <https://console.anthropic.com/>.
+
+### Then
 
 1. Get the code onto your PC (clone the repo, or download it as a ZIP and unzip).
-2. Open the `house_design_studio` folder and **double-click `run.bat`**.
-3. The first time, it installs everything and asks you to paste your API key
-   (saved locally, never shared).
+2. Open the `house_design_studio` folder and **double-click `START_HERE.bat`**
+   (or `run.bat` — they do the same thing).
+3. The first time, it installs everything (a couple of minutes) and asks you
+   to paste your API key (saved locally, never shared).
 4. Your browser opens to the app. Click **Use built-in sample** to confirm it
    works, then type your own description and press **Run design**.
 
 `run.bat` finds your FreeCAD install automatically. If it can't (unusual
 install location), it says so and you can paste the path to `FreeCADCmd.exe`
 into `house_design_studio\.env` as `HDS_FREECAD_CMD=...`.
+
+**If something goes wrong:** the window now **stays open** and prints what
+happened instead of closing — read the message (it usually says exactly what
+to do, e.g. "Python was not found"), fix it, and double-click `run.bat` again.
+If it's still unclear, take a screenshot of the window's text.
 
 **Desktop shortcut:** the first time you run `run.bat`, it adds a **House Design
 Studio** shortcut (with the house icon) to your Desktop, so afterwards you can

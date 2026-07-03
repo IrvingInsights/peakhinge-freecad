@@ -2,6 +2,7 @@
 REM One-click launcher for House Design Studio.
 REM First run: sets up the environment and asks for your Claude API key.
 REM Every run: auto-detects FreeCAD, starts the app, and opens your browser.
+REM This window stays open on any error so you can read what went wrong.
 setlocal enabledelayedexpansion
 cd /d "%~dp0.."
 
@@ -9,7 +10,29 @@ REM 1. Ensure the virtual environment + dependencies exist.
 if not exist ".venv\Scripts\python.exe" (
   echo First-time setup needed. Running setup ...
   call "house_design_studio\setup.bat"
-  if errorlevel 1 exit /b 1
+  if errorlevel 1 (
+    echo.
+    echo ============================================================
+    echo   Setup did not finish, so House Design Studio can't start yet.
+    echo   See the message above for what went wrong, fix it, then
+    echo   double-click run.bat again.
+    echo ============================================================
+    pause
+    exit /b 1
+  )
+)
+
+REM Safety net: if setup reported success but the venv still isn't there,
+REM say so plainly instead of failing mysteriously later.
+if not exist ".venv\Scripts\python.exe" (
+  echo.
+  echo ============================================================
+  echo   Something is wrong: the Python environment ^(.venv^) is still
+  echo   missing after setup. Try deleting the ".venv" folder next to
+  echo   this one and running run.bat again.
+  echo ============================================================
+  pause
+  exit /b 1
 )
 
 REM 2. Ensure a .env file exists (copied from the template).
@@ -28,7 +51,7 @@ for /f "usebackq eol=# tokens=1,* delims==" %%A in ("house_design_studio\.env") 
 )
 if not defined HAS_KEY (
   echo.
-  echo Paste your Claude API key (from https://console.anthropic.com/ ).
+  echo Paste your Claude API key ^(from https://console.anthropic.com/ ^).
   echo It will be saved locally in house_design_studio\.env and not shared.
   set /p "APIKEY=API key: "
   if defined APIKEY (
@@ -58,5 +81,18 @@ echo.
 echo Starting House Design Studio ... a browser window will open shortly.
 echo (Keep this window open while you use the app. Press Ctrl+C to stop.)
 ".venv\Scripts\python.exe" -m house_design_studio.backend.launch
+set "LAUNCH_RC=%errorlevel%"
 
+if not "%LAUNCH_RC%"=="0" (
+  echo.
+  echo ============================================================
+  echo   House Design Studio stopped with an error ^(code %LAUNCH_RC%^).
+  echo   Scroll up to see the message from the app - it usually says
+  echo   exactly what went wrong ^(e.g. a missing API key^).
+  echo ============================================================
+)
+
+echo.
+echo Press any key to close this window.
+pause >nul
 endlocal
