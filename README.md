@@ -1,34 +1,16 @@
-# PeakHinge FreeCAD
+# peakhinge-freecad
 
-This repo section contains a parameter-driven FreeCAD workflow for evaluating the highest-risk mechanism interfaces of the PeakHinge deployable shelter system.
+## Active project: House Design Studio
 
-## Scope
-This does **not** attempt to model the full building first.
-It focuses on the interfaces that determine whether the concept is mechanically sane:
-- pipe-through-bore pivot joint
-- ridge scissor intersection and deployed lock
-- floor cassette corner, hinge line, and bearing/compression interface
+**[`house_design_studio/`](house_design_studio/README.md)** — a standalone app
+that turns a natural-language or image brief into a parametric BIM house
+model, reviews it with a six-role "council of experts" in a self-revising
+loop, and produces a PE-review-ready documentation package. See its README for
+setup and usage.
 
-## Canonical units
-- millimeters for all geometry
-- degrees for angular parameters
+## Archived: PeakHinge designs
 
-## Modeling principles
-- Model interfaces before full assemblies
-- Expose all key dimensions in parameter files
-- Prefer script-generated geometry over manual GUI-only modeling
-- Export each subassembly to STEP, STL, and SVG when practical
-- Keep each script focused on one subassembly
-
-## First build order
-1. Pipe pivot
-2. Ridge scissor + lock
-3. Cassette corner + bearing
-
-## Output policy
-Each script should create:
-- FreeCAD model file
-- STEP export
-- STL export where useful
-- SVG or 2D outline where useful
-- screenshot or saved view if practical
+**[`archive/peakhinge/`](archive/peakhinge/README.md)** — the original
+PeakHinge deployable-shelter FreeCAD workflow (pivot joints, ridge scissors,
+cassette corners). PeakHinge designs have been retired and this folder is kept
+for historical reference only; nothing in it is maintained or built upon.
