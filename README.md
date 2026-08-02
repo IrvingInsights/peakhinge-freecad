@@ -1,34 +1,23 @@
-# PeakHinge FreeCAD
+# peakhinge-freecad
 
-This repo section contains a parameter-driven FreeCAD workflow for evaluating the highest-risk mechanism interfaces of the PeakHinge deployable shelter system.
+This repo now holds only historical/archived material. All active work moved
+to [github.com/IrvingInsights/HOUSE-DESIGN-APP](https://github.com/IrvingInsights/HOUSE-DESIGN-APP)
+(Daniel: "move all into one repo rather than two," 2026-08-02).
 
-## Scope
-This does **not** attempt to model the full building first.
-It focuses on the interfaces that determine whether the concept is mechanically sane:
-- pipe-through-bore pivot joint
-- ridge scissor intersection and deployed lock
-- floor cassette corner, hinge line, and bearing/compression interface
+## Archived: House Design Studio
 
-## Canonical units
-- millimeters for all geometry
-- degrees for angular parameters
+Moved to `design-archive/house_design_studio/` in the HOUSE-DESIGN-APP repo
+on 2026-08-02 — all 96 git-tracked files, preserved exactly. It had been
+labeled the "active project" here, but hadn't been touched since 2026-07-03
+while the Node/React app in HOUSE-DESIGN-APP had 70+ updates in the same
+window; superseded in practice. Its own README and history are unchanged in
+the new location.
 
-## Modeling principles
-- Model interfaces before full assemblies
-- Expose all key dimensions in parameter files
-- Prefer script-generated geometry over manual GUI-only modeling
-- Export each subassembly to STEP, STL, and SVG when practical
-- Keep each script focused on one subassembly
+## Archived: PeakHinge designs
 
-## First build order
-1. Pipe pivot
-2. Ridge scissor + lock
-3. Cassette corner + bearing
-
-## Output policy
-Each script should create:
-- FreeCAD model file
-- STEP export
-- STL export where useful
-- SVG or 2D outline where useful
-- screenshot or saved view if practical
+**[`archive/peakhinge/`](archive/peakhinge/README.md)** — the original
+PeakHinge deployable-shelter FreeCAD workflow (pivot joints, ridge scissors,
+cassette corners). PeakHinge designs have been retired and this folder is kept
+for historical reference only; nothing in it is maintained or built upon.
+Left untouched here per Daniel's explicit instruction — this is the one thing
+in this repo that was NOT meant to move.
